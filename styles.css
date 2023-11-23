@@ -1,0 +1,15 @@
+#display {
+    margin: 10px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    width: 200px;
+}
+
+.number {
+    margin: 2px;
+}
+
+.operator {
+    margin: 2px;
+}
