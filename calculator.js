@@ -43,7 +43,10 @@ buttonWrapper.addEventListener('click', (event) => {
     if (!isButton) {
         return;
     } else {
-        let btnSelection = event.target;
-        //btnSelection.document.
+        let calcDisplay = document.getElementById('display');
+        let currentSelection = event.target.innerText;
+
+        calcDisplay.innerText = currentSelection;
+        
     }
 })
