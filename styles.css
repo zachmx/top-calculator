@@ -6,6 +6,11 @@
     width: 200px;
 }
 
+#numbers{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .number {
     margin: 2px;
 }

@@ -46,7 +46,23 @@ buttonWrapper.addEventListener('click', (event) => {
         let calcDisplay = document.getElementById('display');
         let currentSelection = event.target.innerText;
 
+        let isNumber = parseInt(currentSelection);
+
+        if (isNumber && (operator == undefined)){
+            if (firstNumber == undefined){
+                let firstNumber = currentSelection;
+                console.log(firstNumber + "first");
+            } else {
+                let firstNumber = firstNumber + currentSelection;
+                console.log(firstNumber + "second");
+            }
+        }
+     
         calcDisplay.innerText = currentSelection;
         
+        //if ( == Number){
+        //        console.log('test- its a number');
+        //    
+        //}
     }
 })
