@@ -15,10 +15,6 @@ function divide(a, b){
     return (a / b);
 }
 
-let firstNumber;
-let secondNumber;
-let operator;
-
 function operate(operator, a, b){
     switch (operator){
         case add:
@@ -36,46 +32,71 @@ function operate(operator, a, b){
     }
 }
 
-let buttonWrapper = document.getElementById('button-wrapper');
+// Create Calculator DOM
 
+let body = document.body;
+let calcMain = document.createElement('div');
+    calcMain.id = 'calc-case';
+let calcDisplay = document.createElement('p');
+    calcDisplay.id = 'display';
+let calcBtnWrap = document.createElement('div');
+    calcBtnWrap.id = 'btnWrapper';
+let numberWrap = document.createElement('div');
+    numberWrap.id = 'numberWrapper';
+let opWrap = document.createElement('div');
+    opWrap.id = 'opWrapper';
 
+body.appendChild(calcMain);
+calcMain.appendChild(calcDisplay);
+calcDisplay.innerText = '0';
+calcMain.appendChild(calcBtnWrap);
+calcBtnWrap.appendChild(numberWrap);
+calcBtnWrap.appendChild(opWrap);
 
-let currentValue = buttonWrapper.addEventListener('click', (event) => {
+for (let i = 9; i >= 0; i--) {
 
-    const isButton = event.target.nodeName === 'BUTTON';
+    let numberBtn = document.createElement('button');
 
-    if (!isButton) {
-        return;
-    } else {
+    numberWrap.appendChild(numberBtn);
+    numberBtn.classList = "number";
+    numberBtn.id = "number" + i;
+    numberBtn.innerText = i;
+}
 
-        let calcDisplay = document.getElementById('display');
-        let prevSelection = calcDisplay.innerText;
-        let currentSelection = event.target.innerText;
+let operators = ["+", "-", "x", "÷", "="];
 
-        let isNumber = parseInt(currentSelection);
-
-
-
-            if (calcDisplay.innerText == '0'){
-                calcDisplay.innerText = currentSelection; 
-
-            } else if (isNumber) {
-
-                calcDisplay.innerText = prevSelection +  event.target.innerText;
-                
-            } else if (!isNumber && currentSelection != "=") {
-
-                let firstNumber = calcDisplay.innerText;
-                let operator = currentSelection;
-
-                calcDisplay.innerText = firstNumber + " " + operator + " ";
-                
-            } else if (currentSelection == "="){
-
-            }
+for (element of operators){
     
-        
-        // calcDisplay.innerText = currentSelection + prevSelection;
+    let operatorBtn = document.createElement('button');
+    
+    opWrap.appendChild(operatorBtn);
+    operatorBtn.classList = "operator";
+    operatorBtn.id = "op" + element;
+    operatorBtn.innerText = element;
 
-    }
-})
+
+}
+
+let Variables = {
+    firstNumber: undefined,
+    operation: undefined,
+    secondNumber: undefined,
+}
+
+let numbers = document.getElementsByClassName('number');
+
+Variables.firstNumber = addEventListener("click", (event) =>{
+
+}, (Variables.operation == undefined));
+
+Variables.operation = addEventListener("click", (event) => {
+
+}, );
+
+Variables.secondNumber = addEventListener("click", (event) => {
+
+}, );
+
+
+
+
