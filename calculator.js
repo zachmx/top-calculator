@@ -85,15 +85,32 @@ let Variables = {
 
 let numbers = document.getElementsByClassName('number');
 
-Variables.firstNumber = addEventListener("click", (event) =>{
+addEventListener("click", (event) =>{
+    
+    let currentBtn = event.target;
 
-}, (Variables.operation == undefined));
+    if (currentBtn.classList == 'number' && calcDisplay.innerText == '0' && Variables.operation == undefined) {
+        Variables.firstNumber = currentBtn.innerText;
+        calcDisplay.innerText = Variables.firstNumber;
+    } else if (currentBtn.classList == "number" && Variables.operation == undefined){
+        Variables.firstNumber = Variables.firstNumber + currentBtn.innerText;
+        calcDisplay.innerText = Variables.firstNumber;
+    }    
+    
+});
 
-Variables.operation = addEventListener("click", (event) => {
+addEventListener("click", (event) => {
+
+    let currentBtn = event.target;
+
+    if (currentBtn.classList == 'operator'){
+        Variables.operation = currentBtn.innerText;
+        calcDisplay.innerText = Variables.firstNumber + " " + Variables.operation;
+    }
 
 }, );
 
-Variables.secondNumber = addEventListener("click", (event) => {
+addEventListener("click", (event) => {
 
 }, );
 
