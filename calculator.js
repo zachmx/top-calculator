@@ -52,12 +52,27 @@ let currentValue = buttonWrapper.addEventListener('click', (event) => {
         let prevSelection = calcDisplay.innerText;
         let currentSelection = event.target.innerText;
 
-            if (calcDisplay.innerText == '0'){
-                calcDisplay.innerText = currentSelection;           
-            } else {
-                calcDisplay.innerText = prevSelection +  event.target.innerText;
-            }
+        let isNumber = parseInt(currentSelection);
 
+
+
+            if (calcDisplay.innerText == '0'){
+                calcDisplay.innerText = currentSelection; 
+
+            } else if (isNumber) {
+
+                calcDisplay.innerText = prevSelection +  event.target.innerText;
+                
+            } else if (!isNumber && currentSelection != "=") {
+
+                let firstNumber = calcDisplay.innerText;
+                let operator = currentSelection;
+
+                calcDisplay.innerText = firstNumber + " " + operator + " ";
+                
+            } else if (currentSelection == "="){
+
+            }
     
         
         // calcDisplay.innerText = currentSelection + prevSelection;
