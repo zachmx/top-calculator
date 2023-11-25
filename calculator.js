@@ -38,31 +38,29 @@ function operate(operator, a, b){
 
 let buttonWrapper = document.getElementById('button-wrapper');
 
-buttonWrapper.addEventListener('click', (event) => {
+
+
+let currentValue = buttonWrapper.addEventListener('click', (event) => {
+
     const isButton = event.target.nodeName === 'BUTTON';
+
     if (!isButton) {
         return;
     } else {
+
         let calcDisplay = document.getElementById('display');
+        let prevSelection = calcDisplay.innerText;
         let currentSelection = event.target.innerText;
 
-        let isNumber = parseInt(currentSelection);
-
-        if (isNumber && (operator == undefined)){
-            if (firstNumber == undefined){
-                let firstNumber = currentSelection;
-                console.log(firstNumber + "first");
+            if (calcDisplay.innerText == '0'){
+                calcDisplay.innerText = currentSelection;           
             } else {
-                let firstNumber = firstNumber + currentSelection;
-                console.log(firstNumber + "second");
+                calcDisplay.innerText = prevSelection +  event.target.innerText;
             }
-        }
-     
-        calcDisplay.innerText = currentSelection;
+
+    
         
-        //if ( == Number){
-        //        console.log('test- its a number');
-        //    
-        //}
+        // calcDisplay.innerText = currentSelection + prevSelection;
+
     }
 })
