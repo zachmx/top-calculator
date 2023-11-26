@@ -36,16 +36,16 @@ function divide(a, b){
 function operate(operator, a, b){
     switch (operator){
         case "+":
-            console.log(add(a, b));
+            return add(a, b);
             break
         case "-":
-            console.log(subtract(a, b));
+            return subtract(a, b);
             break
         case "x":
-            console.log(multiply(a, b));
+            return multiply(a, b);
             break
         case "÷":
-            console.log(divide(a, b));
+            return divide(a, b);
             break
     }
 }
@@ -150,7 +150,10 @@ addEventListener("click", (event) => {
     let currentBtn = event.target;
     
     if (currentBtn.id == "=") {
-        operate(Variables.operation, Variables.firstNumber, Variables.secondNumber);
+        calcDisplay.innerText = operate(Variables.operation, Variables.firstNumber, Variables.secondNumber);
+        Variables.firstNumber = calcDisplay.innerText;
+        Variables.operation = undefined;
+        Variables.secondNumber = undefined;
     }
 }, );
 
