@@ -1,32 +1,50 @@
+
+
 function add(a, b){
-     return (a + b);
+
+    let numA = parseInt(a);
+    let numB = parseInt(b);
+
+     return (numA + numB);
 
 }
 
 function subtract(a, b){
-    return (a - b);
+
+    let numA = parseInt(a);
+    let numB = parseInt(b);
+
+    return (numA - numB);
 }
 
 function multiply(a, b){
-    return (a * b);
+
+    let numA = parseInt(a);
+    let numB = parseInt(b);
+
+    return (numA * numB);
 }
 
 function divide(a, b){
-    return (a / b);
+
+    let numA = parseInt(a);
+    let numB = parseInt(b);
+
+    return (numA / numB);
 }
 
 function operate(operator, a, b){
     switch (operator){
-        case add:
+        case "+":
             console.log(add(a, b));
             break
-        case subtract:
+        case "-":
             console.log(subtract(a, b));
             break
-        case multiply:
+        case "x":
             console.log(multiply(a, b));
             break
-        case divide:
+        case "÷":
             console.log(divide(a, b));
             break
     }
@@ -71,7 +89,13 @@ for (element of operators){
     
     opWrap.appendChild(operatorBtn);
     operatorBtn.classList = "operator";
-    operatorBtn.id = "op" + element;
+
+    if (element == "="){
+        operatorBtn.id = "=";
+    } else {
+        operatorBtn.id = "op" + element;
+    }
+
     operatorBtn.innerText = element;
 
 
@@ -103,7 +127,7 @@ addEventListener("click", (event) => {
 
     let currentBtn = event.target;
 
-    if (currentBtn.classList == 'operator'){
+    if (currentBtn.classList == 'operator' && currentBtn.id != "="){
         Variables.operation = currentBtn.innerText;
         calcDisplay.innerText = Variables.firstNumber + " " + Variables.operation;
     }
@@ -112,8 +136,23 @@ addEventListener("click", (event) => {
 
 addEventListener("click", (event) => {
 
+    let currentBtn = event.target;
+
+    if (currentBtn.classList == 'number' && Variables.operation != undefined){
+        Variables.secondNumber = currentBtn.innerText;
+        calcDisplay.innerText = Variables.firstNumber + " " + Variables.operation + " " + Variables.secondNumber;
+    }
+
 }, );
 
+addEventListener("click", (event) => {
+
+    let currentBtn = event.target;
+    
+    if (currentBtn.id == "=") {
+        operate(Variables.operation, Variables.firstNumber, Variables.secondNumber);
+    }
+}, );
 
 
 
