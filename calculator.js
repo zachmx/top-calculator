@@ -101,6 +101,12 @@ for (element of operators){
 
 }
 
+let clearBtn = document.createElement('button');
+    clearBtn.id = 'clear';
+    clearBtn.innerText = 'clear';
+
+calcBtnWrap.appendChild(clearBtn)
+
 let Variables = {
     firstNumber: undefined,
     operation: undefined,
@@ -138,9 +144,14 @@ addEventListener("click", (event) => {
 
     let currentBtn = event.target;
 
-    if (currentBtn.classList == 'number' && Variables.operation != undefined){
+    if (currentBtn.classList == 'number' && Variables.operation != undefined && Variables.secondNumber == undefined){
         Variables.secondNumber = currentBtn.innerText;
         calcDisplay.innerText = Variables.firstNumber + " " + Variables.operation + " " + Variables.secondNumber;
+    } else if (currentBtn.classList == 'number'&& Variables.operation != undefined && Variables.secondNumber != undefined) {
+        Variables.secondNumber = currentBtn.innerText + Variables.secondNumber;
+        calcDisplay.innerText = Variables.firstNumber + " " + Variables.operation + " " + Variables.secondNumber;
+
+
     }
 
 }, );
@@ -149,13 +160,26 @@ addEventListener("click", (event) => {
 
     let currentBtn = event.target;
     
-    if (currentBtn.id == "=") {
+    if (currentBtn.id == "=" && Variables.firstNumber != undefined && Variables.secondNumber != undefined) {
         calcDisplay.innerText = operate(Variables.operation, Variables.firstNumber, Variables.secondNumber);
         Variables.firstNumber = calcDisplay.innerText;
         Variables.operation = undefined;
         Variables.secondNumber = undefined;
     }
-}, );
+}, );;
+
+addEventListener('click', (event) =>{
+
+    let currentBtn = event.target;
+
+    if (currentBtn.id == "clear") {
+        calcDisplay.innerText = "0"
+        Variables.firstNumber = undefined;
+        Variables.operation = undefined;
+        Variables.secondNumber = undefined;
+
+    }
+})
 
 
 
