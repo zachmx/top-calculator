@@ -105,7 +105,7 @@ let clearBtn = document.createElement('button');
     clearBtn.id = 'clear';
     clearBtn.innerText = 'clear';
 
-calcBtnWrap.appendChild(clearBtn)
+calcMain.appendChild(clearBtn)
 
 let Variables = {
     firstNumber: undefined,
@@ -133,8 +133,13 @@ addEventListener("click", (event) => {
 
     let currentBtn = event.target;
 
-    if (currentBtn.classList == 'operator' && currentBtn.id != "="){
+    if (currentBtn.classList == 'operator' && currentBtn.id != "=" && Variables.secondNumber == undefined){
         Variables.operation = currentBtn.innerText;
+        calcDisplay.innerText = Variables.firstNumber + " " + Variables.operation;
+    } else if (currentBtn.classList == 'operator' && currentBtn.id != "=" && Variables.secondNumber != undefined){
+        Variables.firstNumber = operate(Variables.operation, Variables.firstNumber, Variables.secondNumber);
+        Variables.operation = currentBtn.innerText;
+        Variables.secondNumber = undefined;
         calcDisplay.innerText = Variables.firstNumber + " " + Variables.operation;
     }
 

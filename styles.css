@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-    max-width: 50%;
+    max-width: 300px;
+    min-width: 300px;
     align-items: center;
 }
 
@@ -10,20 +11,32 @@
     margin: 10px;
     text-align: center;
     color: white;
-    min-width: 200px;
+    min-width: 100%;
     min-height: 20px;
     background-color: black;
+    border: solid;
+    border-color: bisque;
 }
 
-#numbers{
+#btnWrapper {
     display: flex;
-    flex-wrap: wrap;
 }
 
 .number {
     margin: 2px;
+    padding: 20px;
+    min-width: 60px;
+    min-height: 60px;
+    
 }
 
 .operator {
     margin: 2px;
+    padding: 20px;
+    min-width: 60px;
+    min-height: 60px;
+}
+
+#clear {
+    display: flex;
 }
